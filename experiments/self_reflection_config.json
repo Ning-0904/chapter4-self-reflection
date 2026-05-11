@@ -1,0 +1,35 @@
+{
+  "_comment_": "Chapter 4 self-reflection pipeline config. Mirrors chapter2 config structure.",
+  "common": {
+    "corpus_name": "hotpotpqa",
+    "max_iterations": 4,
+    "top_k": 10,
+    "retrieval_buffer_k": 50,
+    "bm25_top_k": 30,
+
+    "_comment_evaluator": "T5 evaluator thresholds — same semantics as CRAG process_flag",
+    "evaluator_upper_threshold": 10.0,
+    "evaluator_lower_threshold": -10.0,
+    "evaluator_model_path": "../evaluatator_model",
+
+    "max_tokens_rewrite": 64,
+
+    "subquestion_prompt_mode": "builder",
+    "control_prompt_mode": "builder",
+
+    "general_on_cpu": false,
+    "enable_llm_cache": true,
+    "llm_cache_path": "outputs/cache/general_llm_cache.json",
+
+    "es_host": "localhost",
+    "es_port": 9200,
+    "es_user": "elastic",
+    "es_password": "246247"
+  },
+  "batch_test": {
+    "dataset": "../chapter2-rewrite/src/Dataset/hotpot_train_test_sample_200.json",
+    "max_samples": null,
+    "output_jsonl": "outputs/self_reflection/hotpot-200.jsonl",
+    "summary_json": "outputs/self_reflection/hotpot-200-summary.json"
+  }
+}
